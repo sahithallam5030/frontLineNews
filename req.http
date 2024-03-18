@@ -1,0 +1,46 @@
+POST http://localhost:3000/users/create-user
+Content-Type: application/json
+
+{
+    "firstname":"Sahith",
+    "lastname":"Allam",
+    "email":"sahithallam5030@gmail.com",
+    "password":"Sahith@2003",
+    "mobile":"9059778895"
+}
+
+###
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "email":"sahithallam5030@gmail.com",
+    "password":"Sahith@2003"
+}
+
+###
+PUT  http://localhost:3000/users/update-user 
+Content-Type: application/json
+
+{
+     "email":"sahithallam5030@gmail.com",
+     "updates":{
+        "mobile":"9059778895",
+     "password":"Sahith@2003"
+     }
+     
+}
+
+###
+DELETE  http://localhost:3000/users/delete-user 
+Content-Type: application/json
+
+{
+     "email":"sahithallam5030@gmail.com"
+}
+###
+
+GET http://localhost:3000/news/getnews
+
+###
+GET http://localhost:3000/news/getnews/dhoni
