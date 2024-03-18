@@ -1,4 +1,5 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
+import axios from 'axios';
 
 export const getNews=createAsyncThunk('getnews',async(query,thunkApi)=>{
     let id=query.id;
