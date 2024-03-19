@@ -3,11 +3,12 @@ const exp=require('express');
 const mclient=require('mongodb').MongoClient
 const userApi=require('./apis/userApi');
 const newsApi = require('./apis/newsApi');
+const path=require('path')
 const cors=require('cors')
 require('dotenv').config()
 const app=exp();
 app.use(exp.json())
-
+app.use(exp.static(__dirname,'./build'));
 app.use(cors());
 //connect to database
 mclient.connect(process.env.DATABASE_URL)
@@ -24,6 +25,9 @@ mclient.connect(process.env.DATABASE_URL)
 app.use('/users',userApi);
 app.use('/news',newsApi)
 
+app.use('*',(request,response)=>{
+    response.sendFile(path.join(__dirname,'./build/index.html'));
+})
 app.use((request,response,next)=>{
     response.send({message:"Invalid/Bad Request"})
 })
