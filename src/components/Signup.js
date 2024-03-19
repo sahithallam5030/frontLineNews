@@ -27,8 +27,10 @@ function Signup() {
     axios.post("http://localhost:3000/users/create-user",data)
     .then((response)=>{
         let data=response.data;
-        if(data.message==="Account Created Successfully")
+        if(data.message==="Account Created Successfully"){
+          alert(data.message);
         navigate('/login');
+        }
     })
     .catch((error)=>{
       console.log(error);

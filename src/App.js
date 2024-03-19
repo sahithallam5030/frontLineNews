@@ -6,7 +6,6 @@ import {Route,Routes} from 'react-router-dom'
 function App() {
   return (
     <div>
-      <Login/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/signup" element={<Signup/>}/>

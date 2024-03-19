@@ -85,7 +85,7 @@ if(userOfDatabase!==null){
     let passwordMatch=await bcryptjs.compare(userObject.password,userOfDatabase.password);
     if(passwordMatch===true){
         //password is matched then generate token
-        let token=jwt.sign(userOfDatabase,process.env.SECRET_KEY,{expiresIn:"1h"});
+        let token=jwt.sign(userOfDatabase,process.env.SECRET_KEY,{expiresIn:"2h"});
         response.send({message:"Success",payload:token,userObject:userOfDatabase});
     }
     else{

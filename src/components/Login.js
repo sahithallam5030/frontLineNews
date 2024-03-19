@@ -1,12 +1,17 @@
 import React,{useState} from 'react'
 import {useForm} from 'react-hook-form'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
+import {useSelector,useDispatch} from 'react-redux'
+import { userLogin } from '../slices/userSlice'
 import { IoMailOutline } from "react-icons/io5";
 import { FaRegEye,FaRegEyeSlash } from "react-icons/fa6";
 import '../css/Login.css'
 
 function Login() {
   let {register,handleSubmit}=useForm();
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  let {userSuccess}=useSelector(state=>state.users)
   const [type,setType]=useState('password');
   const [icon,setIcon]=useState(FaRegEye);
 
@@ -22,6 +27,10 @@ function Login() {
   }
   const onFormSubmit=(data)=>{
     console.log(data);
+    dispatch(userLogin(data));
+    if(userSuccess===true){
+        navigate('/');
+    }
   }
 
   return (

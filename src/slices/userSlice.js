@@ -5,7 +5,13 @@ export const userLogin=createAsyncThunk('loginuser',async(userCredentials,thunkA
     let response=await axios.post('http://localhost:3000/users/login',userCredentials);
     let data=response.data;
     if(data.message==="Success"){
-        localStorage.setItem('details',{token:data.payload,username:userCredentials.username,password:userCredentials.password});
+        let temp={
+            token:data.payload,
+            email:userCredentials.email,
+            password:userCredentials.password
+        };
+        temp=JSON.stringify(temp);
+        localStorage.setItem('details',temp);
         return data.userObject;
     }
     else if(data.message==="Invalid User" || data.message==="Incorrect Password"){
@@ -15,17 +21,27 @@ export const userLogin=createAsyncThunk('loginuser',async(userCredentials,thunkA
 
 export const userReload=createAsyncThunk('pagereload',async(thunkApi)=>{
     let details=localStorage.getItem('details');
-    console.log(details);
+    details=JSON.parse(details);
     if(details.token!==undefined){
-    let response=await axios.post('http://localhost:3000/users/relogin',{username:details.username,password:details.password});
+    let response=await axios.post('http://localhost:3000/users/relogin',details);
     let data=response.data;
     if(data.message==="Success"){
-        localStorage.setItem('details',{token:details.token,username:details.username,password:details.password});
+        let temp={
+            token:details.token,
+            email:details.email,
+            password:details.password
+        }
+        temp=JSON.stringify(temp);
+        localStorage.setItem('details',temp);
         return data.userObject;
     }
     else if(data.message==="Session Expired"){
+        alert(data.message);
         return thunkApi.rejectWithValue(data);
     }
+}
+else{
+    return thunkApi.rejectWithValue(undefined);
 }
 })
 
