@@ -24,7 +24,7 @@ function Signup() {
   }
   const onFormSubmit=(data)=>{
     console.log(data);
-    axios.post("http://localhost:3000/users/create-user",data)
+    axios.post("/users/create-user",data)
     .then((response)=>{
         let data=response.data;
         if(data.message==="Account Created Successfully"){

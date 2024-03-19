@@ -2,7 +2,7 @@ import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export const userLogin=createAsyncThunk('loginuser',async(userCredentials,thunkApi)=>{
-    let response=await axios.post('http://localhost:3000/users/login',userCredentials);
+    let response=await axios.post('/users/login',userCredentials);
     let data=response.data;
     if(data.message==="Success"){
         let temp={
@@ -15,6 +15,7 @@ export const userLogin=createAsyncThunk('loginuser',async(userCredentials,thunkA
         return data.userObject;
     }
     else if(data.message==="Invalid User" || data.message==="Incorrect Password"){
+        alert(data.message);
         return thunkApi.rejectWithValue(data);
     }
 })
@@ -23,7 +24,7 @@ export const userReload=createAsyncThunk('pagereload',async(thunkApi)=>{
     let details=localStorage.getItem('details');
     details=JSON.parse(details);
     if(details.token!==undefined){
-    let response=await axios.post('http://localhost:3000/users/relogin',details);
+    let response=await axios.post('/users/relogin',details);
     let data=response.data;
     if(data.message==="Success"){
         let temp={

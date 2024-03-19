@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const getNews=createAsyncThunk('getnews',async(query,thunkApi)=>{
     let id=query.id;
-    let response=await axios.get(`http://localhost:3000/news/getnews/${id}`);
+    let response=await axios.get(`/news/getnews/${id}`);
     let data=response.data;
     if(data.message==="Success"){
         return data.payload;
