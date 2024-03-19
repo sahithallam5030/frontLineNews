@@ -8,7 +8,7 @@ const cors=require('cors')
 require('dotenv').config()
 const app=exp();
 app.use(exp.json())
-app.use(exp.static(__dirname,'./build'));
+app.use(exp.static(path.join(__dirname,'./build')));
 app.use(cors());
 //connect to database
 mclient.connect(process.env.DATABASE_URL)
