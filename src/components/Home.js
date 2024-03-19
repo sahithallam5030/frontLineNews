@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Header from './Header'
+import Footer from './Footer'
 import Loading from './Loading'
 import {getNews} from '../slices/newsSlice'
 import { IoIosArrowForward } from "react-icons/io";
@@ -55,6 +56,7 @@ function Home() {
           }
         </div>
 }
+<Footer/>
     </div>
   )
 }

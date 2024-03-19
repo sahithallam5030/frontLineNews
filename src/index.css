@@ -49,6 +49,29 @@
     justify-content: space-between;
 }
 
+
+/* Footer section  */
+#outer-footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+#footer-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Lato',sans-serif;
+    padding-block: 2rem;
+}
+#personal{
+    width: 30%;
+    font-size: 1.1rem;
+}
+#website-details{
+    width: 50%;
+    font-size: 1.1rem;
+}
+
 @media screen and (max-width:1025px){
     #home-section{
         grid-template-columns: auto auto;
@@ -59,6 +82,12 @@
     #home-section{
         grid-template-columns: auto auto;
         justify-content: space-between;
+    }
+    #personal{
+        width: 35%;
+    }
+    #website-details{
+        width: 55%;
     }
 }
 @media screen and (max-width:576px){
@@ -76,5 +105,17 @@
     }
     #header{
         padding-inline:0.5rem;
+    }
+    #footer-section{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+    #personal{
+        width: 100%;
+    }
+    #website-details{
+        width: 100%;
     }
 }
