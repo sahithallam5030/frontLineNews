@@ -2,12 +2,13 @@ import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Header from './Header'
+import Loading from './Loading'
 import {getNews} from '../slices/newsSlice'
 import { IoIosArrowForward } from "react-icons/io";
 import { clearLoginStatus, userReload } from '../slices/userSlice'
 
 function Home() {
-  const {newsArray,newsSuccess}=useSelector(state=>state.news);
+  const {newsArray,newsSuccess,newsLoading}=useSelector(state=>state.news);
   const {userSuccess}=useSelector(state=>state.users);
   const dispatch=useDispatch();
   let articles=[];
@@ -25,6 +26,8 @@ function Home() {
   return (
     <div id='outer-home'>
       <Header/>
+      { (newsLoading===true) && <Loading/>}
+      { (newsSuccess===true) && 
         <div id="home-section" className="container">
           
           {
@@ -51,6 +54,7 @@ function Home() {
              </>
           }
         </div>
+}
     </div>
   )
 }
