@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,6 +13,7 @@ function Header() {
   const {register,handleSubmit}=useForm();
   const dispatch=useDispatch();
   const userLogout=()=>{
+    localStorage.clear();
     dispatch(clearLoginStatus());
   }
   const searchNewsByName=(query)=>{
