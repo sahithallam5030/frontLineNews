@@ -89,7 +89,7 @@ if(userOfDatabase!==null){
         response.send({message:"Success",payload:token,userObject:userOfDatabase});
     }
     else{
-        response.send({message:"Incorrect password"})
+        response.send({message:"Incorrect Password"})
     }
 }
 else{
